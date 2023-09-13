@@ -73,7 +73,7 @@ function squares(x, y, animation, pScope){
   let backgroundArcStart2 = 270 - angleOffset2;
   let backgroundArcEnd2 = 270 + angleOffset2;
  
-  fill(89, 255, 255) //0, 255, 183
+  fill(89, 255, 255) //0, 255, 183       64, 86, 255    89, 255, 255
   strokeWeight(80)
   stroke(177, 247, 64)
   arc(x,y,300,500,backgroundArcStart2,backgroundArcEnd2); 
@@ -105,7 +105,7 @@ function ducks(x, y, animation, pScope){
  
 
   push()
-    rotate(30 * animation.frame) //90 originaly
+    rotate(360/SLICE_COUNT * animation.frame) //90 originaly
     let rectJump = 200 + (animation.wave(1) * 25) //750 and 50 originaly
     noStroke()
     fill(255)
@@ -129,8 +129,8 @@ function ducks(x, y, animation, pScope){
  
 
     push()
-      rotate(30 * animation.frame) //90 originaly
-      let rectJump = 200 + (animation.wave(1) * 25) //750 and 50 originaly
+      rotate(360/SLICE_COUNT  * animation.frame) //90 originaly
+      let rectJump = 550 + (animation.wave(1) * 50) //750 and 50 originaly
       
       fill(0)
       ellipse(60, 675, 50,10)
@@ -145,7 +145,8 @@ function ducks(x, y, animation, pScope){
       stroke(0)
       strokeWeight(5)
 
-      line(0,630,0,550)
+      line(0,630,0,rectJump)
+      line(0,rectJump,30,rectJump)
   
     pop()
     
@@ -157,7 +158,7 @@ function ducks(x, y, animation, pScope){
    
     //fill(171, 255, 251)
     fill(64, 86, 255)
-      ellipse(0,0,3)
+      ellipse(0,0,4)
      // line(5)
     }
 
@@ -167,6 +168,7 @@ function ducks(x, y, animation, pScope){
       
        //fill(171, 255, 251)
        fill(64, 86, 255)
+       
          ellipse(0,0,3,10)
          ellipse(50,20,3,10)
          ellipse(-50,20,3,10)
