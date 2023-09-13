@@ -12,37 +12,40 @@ function setup_layers(pScope){
 
   new PLayer(null, 255, 143, 87);  //lets us draw the whole circle background, ignoring the boundaries
 
-  var layer1 = new PLayer(faces);
   
-  layer1.mode( SWIRL(10) );
-  layer1.set_boundary( 0, 1000 ); //1000
 
-  var layer2 = new PLayer(squares);
-  layer2.mode( RING );
-  layer2.set_boundary( 0, 500 );
+  var layer1 = new PLayer(squares);
+  layer1.mode( RING );
+  layer1.set_boundary( 0, 500 );
 
-  var layer3 = new PLayer(circles);
+  var layer2 = new PLayer(circles);
+  layer2.mode(RING);
+  layer2.set_boundary( 0, 1000 );
+
+  var layer3 = new PLayer(ducks); //used to be edge
   layer3.mode(RING);
   layer3.set_boundary( 0, 1000 );
 
-  var layer4 = new PLayer(edge);
+  var layer4 = new PLayer(walkingDucks); 
   layer4.mode(RING);
-  layer4.set_boundary( 0, 1000 );
+  layer4.set_boundary( 500, 800 );
+
+  var effect = new PLayer(bubbles);
+  effect.mode(SWIRL(3));
+  effect.set_boundary( 0, 100 );
   
+  var rainEffect = new PLayer(rain);
+  rainEffect.mode(SWIRL(5));
+  rainEffect.set_boundary( 300, 800 );
 }
 
-function faces(x, y, animation, pScope){
-  
-  //scale(animation.frame*2);
-  //scale(1);
- // fill(247, 64, 64);
-  //noStroke()
-  //ellipse(0,0,30,30); // draw head
+
+
  
   
   
 
-}
+
 
 function squares(x, y, animation, pScope){
   scale(2)
@@ -50,7 +53,7 @@ function squares(x, y, animation, pScope){
   let angleOffset = (360 / SLICE_COUNT) / 2
   let backgroundArcStart = 270 - angleOffset;
   let backgroundArcEnd = 270 + angleOffset;
- 
+ //orange
   fill(255, 202, 87)
   //stroke(255, 127, 41)
   //strokeWeight(10)
@@ -59,12 +62,12 @@ function squares(x, y, animation, pScope){
 
   //yellow dots
   
-  fill(255, 225, 89)
-  stroke(255, 242, 0)
-  strokeWeight(5)
-  ellipse(0,-300-animation.wave()*70,20) // .wave is a cosine wave btw negative numbers//first variable twists it
-  ellipse(40,-300-animation.wave()*50,20) //make the rain
-  ellipse(-40,-300-animation.wave()*50,20)
+  //fill(255, 225, 89)
+  //stroke(255, 242, 0)
+  //strokeWeight(5)
+  //ellipse(0,-300-animation.wave()*70,20) // .wave is a cosine wave btw negative numbers//first variable twists it
+  //ellipse(40,-300-animation.wave()*50,20) //make the rain
+  //ellipse(-40,-300-animation.wave()*50,20)
 
   let angleOffset2 = (360 / SLICE_COUNT) / 2
   let backgroundArcStart2 = 270 - angleOffset2;
@@ -98,11 +101,9 @@ function circles(x, y, animation, pScope){
 
 }
 
-function edge(x, y, animation, pScope){
+function ducks(x, y, animation, pScope){
  
-  
- 
- 
+
   push()
     rotate(30 * animation.frame) //90 originaly
     let rectJump = 200 + (animation.wave(1) * 25) //750 and 50 originaly
@@ -121,6 +122,53 @@ function edge(x, y, animation, pScope){
 
 
   pop()
-
   
   } 
+
+  function walkingDucks(x, y, animation, pScope){
+ 
+
+    push()
+      rotate(30 * animation.frame) //90 originaly
+      let rectJump = 200 + (animation.wave(1) * 25) //750 and 50 originaly
+      
+      fill(0)
+      ellipse(60, 675, 50,10)
+
+      
+      
+      noStroke()
+      fill(255)
+      ellipse(0, 650, 100,50) //y was rectjump
+      ellipse(40, 675, 50)
+      
+      stroke(0)
+      strokeWeight(5)
+
+      line(0,630,0,550)
+  
+    pop()
+    
+    } 
+
+  function bubbles(x, y, animation, pScope){
+   //strokeWeight(5)
+    //stroke(255)
+   
+    //fill(171, 255, 251)
+    fill(64, 86, 255)
+      ellipse(0,0,3)
+     // line(5)
+    }
+
+    function rain(x, y, animation, pScope){
+      //strokeWeight(5)
+       //stroke(255)
+      
+       //fill(171, 255, 251)
+       fill(64, 86, 255)
+         ellipse(0,0,3,10)
+         ellipse(50,20,3,10)
+         ellipse(-50,20,3,10)
+         
+       }
