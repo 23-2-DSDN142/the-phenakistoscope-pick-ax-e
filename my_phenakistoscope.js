@@ -55,8 +55,10 @@ function squares(x, y, animation, pScope){
   stroke(255, 127, 41)
   arc(x,y,500,800,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background have to be the same number for a circle
 
-  fill(255)
-  ellipse(0,-300-animation.wave()*50,20,20) // .wave is a cosine wave btw negative numbers//first variable twists it
+  fill(255, 225, 89)
+  stroke(255, 242, 0)
+  strokeWeight(5)
+  ellipse(0,-300-animation.wave()*80,20,20) // .wave is a cosine wave btw negative numbers//first variable twists it
   ellipse(40,-300-animation.wave()*50,20,20) //make the rain
   ellipse(-40,-300-animation.wave()*50,20,20)
 
@@ -74,17 +76,19 @@ function squares(x, y, animation, pScope){
 function circles(x, y, animation, pScope){
   //translate(50 * animation.frame, 0);
   //scale(animation.frame*2);
-  fill(250, 89, 67)
+  fill(250, 89, 67);
   
   let ballSize  = 100 + (animation.wave(1)* 20)
   let bouce = 30* animation.wave()
-  noStroke()
-  ellipse(150, 850+bouce ,ballSize); 
-  ellipse(80, 850+bouce ,ballSize); 
-  ellipse(115, 900+bouce ,ballSize+10); 
-  ellipse(200, 850+bouce ,ballSize); 
-  ellipse(30, 850+bouce ,ballSize);
+  noStroke();
   
+  
+  ellipse(250, 850+bouce ,ballSize+40); //middle ball
+  ellipse(180, 850+bouce ,ballSize); 
+  ellipse(120, 840+bouce ,ballSize-30); 
+  ellipse(-180, 850+bouce ,ballSize); 
+  ellipse(-120, 835+bouce ,ballSize-30); 
+
 
 }
 
