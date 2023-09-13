@@ -52,21 +52,25 @@ function squares(x, y, animation, pScope){
   let backgroundArcEnd = 270 + angleOffset;
  
   fill(255, 202, 87)
-  stroke(255, 127, 41)
-  arc(x,y,500,800,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background have to be the same number for a circle
+  //stroke(255, 127, 41)
+  //strokeWeight(10)
+  noStroke()
+  arc(x,y,500,780,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background have to be the same number for a circle
 
+  //yellow dots
+  
   fill(255, 225, 89)
   stroke(255, 242, 0)
   strokeWeight(5)
-  ellipse(0,-300-animation.wave()*80,20,20) // .wave is a cosine wave btw negative numbers//first variable twists it
-  ellipse(40,-300-animation.wave()*50,20,20) //make the rain
-  ellipse(-40,-300-animation.wave()*50,20,20)
+  ellipse(0,-300-animation.wave()*70,20) // .wave is a cosine wave btw negative numbers//first variable twists it
+  ellipse(40,-300-animation.wave()*50,20) //make the rain
+  ellipse(-40,-300-animation.wave()*50,20)
 
   let angleOffset2 = (360 / SLICE_COUNT) / 2
   let backgroundArcStart2 = 270 - angleOffset2;
   let backgroundArcEnd2 = 270 + angleOffset2;
  
-  fill(89, 255, 255)
+  fill(89, 255, 255) //0, 255, 183
   strokeWeight(80)
   stroke(177, 247, 64)
   arc(x,y,300,500,backgroundArcStart2,backgroundArcEnd2); 
@@ -76,6 +80,8 @@ function squares(x, y, animation, pScope){
 function circles(x, y, animation, pScope){
   //translate(50 * animation.frame, 0);
   //scale(animation.frame*2);
+  
+  //clouds
   fill(250, 89, 67);
   
   let ballSize  = 100 + (animation.wave(1)* 20)
