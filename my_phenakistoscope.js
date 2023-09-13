@@ -1,7 +1,7 @@
 const SLICE_COUNT = 11;
 
 function setup_pScope(pScope){
-  pScope.output_mode(ANIMATED_DISK);//ANIMATED_DISK//OUTPUT_GIF(1000
+  pScope.output_mode(ANIMATED_DISK);//ANIMATED_DISK//OUTPUT_GIF(1000) //
   pScope.scale_for_screen(true);
   pScope.draw_layer_boundaries(false);
   pScope.set_direction(CW);
@@ -10,7 +10,7 @@ function setup_pScope(pScope){
 
 function setup_layers(pScope){
 
-  new PLayer(null, 126, 252, 227);  //lets us draw the whole circle background, ignoring the boundaries
+  new PLayer(null, 255, 143, 87);  //lets us draw the whole circle background, ignoring the boundaries
 
   var layer1 = new PLayer(faces);
   
@@ -19,22 +19,28 @@ function setup_layers(pScope){
 
   var layer2 = new PLayer(squares);
   layer2.mode( RING );
-  layer2.set_boundary( 0, 400 );
+  layer2.set_boundary( 0, 500 );
+
+  var layer3 = new PLayer(circles);
+  layer3.mode(RING);
+  layer3.set_boundary( 0, 1000 );
+
+  var layer4 = new PLayer(edge);
+  layer4.mode(RING);
+  layer4.set_boundary( 0, 1000 );
   
 }
 
 function faces(x, y, animation, pScope){
   
   //scale(animation.frame*2);
-  scale(1);
-
-  ellipse(0,0,50,50); // draw head
-  fill(30);
-  ellipse(-10,-10,10,10); //draw eye
-  ellipse(10,-10,10,10); // draw eye
-  arc(0,10,20,10,0,180); // draw mouth
-
-  //rect(-25,0, 55, 55)
+  //scale(1);
+ // fill(247, 64, 64);
+  //noStroke()
+  //ellipse(0,0,30,30); // draw head
+ 
+  
+  
 
 }
 
@@ -44,11 +50,67 @@ function squares(x, y, animation, pScope){
   let angleOffset = (360 / SLICE_COUNT) / 2
   let backgroundArcStart = 270 - angleOffset;
   let backgroundArcEnd = 270 + angleOffset;
-
-  fill(120, 191, 120)
-  arc(x,y,800,800,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background have to be the same number for a circle
+ 
+  fill(255, 202, 87)
+  stroke(255, 127, 41)
+  arc(x,y,500,800,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background have to be the same number for a circle
 
   fill(255)
-  rect(0,-300-animation.wave()*50,20,20) // .wave is a cosine wave btw negative numbers
+  ellipse(0,-300-animation.wave()*50,20,20) // .wave is a cosine wave btw negative numbers//first variable twists it
+  ellipse(40,-300-animation.wave()*50,20,20) //make the rain
+  ellipse(-40,-300-animation.wave()*50,20,20)
+
+  let angleOffset2 = (360 / SLICE_COUNT) / 2
+  let backgroundArcStart2 = 270 - angleOffset2;
+  let backgroundArcEnd2 = 270 + angleOffset2;
+ 
+  fill(89, 255, 255)
+  strokeWeight(80)
+  stroke(177, 247, 64)
+  arc(x,y,300,500,backgroundArcStart2,backgroundArcEnd2); 
 
 }
+
+function circles(x, y, animation, pScope){
+  //translate(50 * animation.frame, 0);
+  //scale(animation.frame*2);
+  fill(250, 89, 67)
+  
+  let ballSize  = 100 + (animation.wave(1)* 20)
+  let bouce = 30* animation.wave()
+  noStroke()
+  ellipse(150, 850+bouce ,ballSize); 
+  ellipse(80, 850+bouce ,ballSize); 
+  ellipse(115, 900+bouce ,ballSize+10); 
+  ellipse(200, 850+bouce ,ballSize); 
+  ellipse(30, 850+bouce ,ballSize);
+  
+
+}
+
+function edge(x, y, animation, pScope){
+ 
+  
+ 
+ 
+  push()
+    rotate(30 * animation.frame) //90 originaly
+    let rectJump = 200 + (animation.wave(1) * 25) //750 and 50 originaly
+    noStroke()
+    fill(255)
+    ellipse(150, 200, 100,100) //y was rectjump
+    
+    fill(255, 141, 41)
+    ellipse(10, 160, 40,30) 
+    fill(255)
+    ellipse(10, 200, 70,70) 
+    
+    fill(0)
+    ellipse(30, 190, 10)
+    ellipse(-10, 190, 10)
+
+
+  pop()
+
+  
+  } 
