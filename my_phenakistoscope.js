@@ -32,7 +32,7 @@ function setup_layers(pScope){
 
   var effect = new PLayer(bubbles);
   effect.mode(SWIRL(3));
-  effect.set_boundary( 0, 100 );
+  effect.set_boundary( 0, 120 );
   
   var rainEffect = new PLayer(rain);
   rainEffect.mode(SWIRL(5));
@@ -92,11 +92,11 @@ function circles(x, y, animation, pScope){
   noStroke();
   
   
-  ellipse(250, 850+bouce ,ballSize+40); //middle ball
-  ellipse(180, 850+bouce ,ballSize); 
-  ellipse(120, 840+bouce ,ballSize-30); 
-  ellipse(-180, 850+bouce ,ballSize); 
-  ellipse(-120, 835+bouce ,ballSize-30); 
+  ellipse(250, 850+bouce-10 ,ballSize+40); //middle ball
+  ellipse(180, 850+bouce-10 ,ballSize); 
+  ellipse(120, 840+bouce-10 ,ballSize-30); 
+  ellipse(-180, 850+bouce-10 ,ballSize); 
+  ellipse(-120, 835+bouce-10 ,ballSize-30); 
 
 
 }
@@ -153,12 +153,12 @@ function ducks(x, y, animation, pScope){
     } 
 
   function bubbles(x, y, animation, pScope){
-   //strokeWeight(5)
-    //stroke(255)
+   
    
     //fill(171, 255, 251)
-    fill(64, 86, 255)
-      ellipse(0,0,4)
+    stroke(14, 150, 148)
+    fill(14, 150, 148)
+      ellipse(0,0,4) //4
      // line(5)
     }
 
