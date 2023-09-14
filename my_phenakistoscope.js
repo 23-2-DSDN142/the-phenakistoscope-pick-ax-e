@@ -1,7 +1,7 @@
 const SLICE_COUNT = 11;
 
 function setup_pScope(pScope){
-  pScope.output_mode(ANIMATED_DISK);//ANIMATED_DISK//OUTPUT_GIF(1000) //
+  pScope.output_mode(ANIMATED_DISK );//ANIMATED_DISK//OUTPUT_GIF(1000) //OUTPUT_PRINT(print_size)
   pScope.scale_for_screen(true);
   pScope.draw_layer_boundaries(false);
   pScope.set_direction(CW);
@@ -67,14 +67,14 @@ function circles(x, y, animation, pScope){
   let backgroundArcStart2 = 270 - angleOffset2;
   let backgroundArcEnd2 = 270 + angleOffset2;
  
-  fill(89, 255, 255) 
+  fill(89, 255, 255) //lighter blue 89, 255, 255
   
   strokeWeight(80)
   stroke(177, 247, 64)
   arc(x,y,300,500,backgroundArcStart2,backgroundArcEnd2); //blue edge and green stroke
   
   noStroke()
-  fill(52, 235, 232)
+  fill(52, 235, 232) //darker blue 52, 235, 232
  
   
   arc(x,y,200,400,backgroundArcStart2,backgroundArcEnd2); //pond
@@ -83,7 +83,7 @@ function circles(x, y, animation, pScope){
   //middle wirlpool dots
   
 
-  fill(89, 255, 255)
+  fill( 89, 255, 255 ) // 52, 235, 232   89, 255, 255
   
   ellipse(0,-40-animation.wave()*10,20) // .wave is a cosine wave btw negative numbers//first variable twists it
  
@@ -163,10 +163,10 @@ function ducks(x, y, animation, pScope){
   function bubbles(x, y, animation, pScope){
    
     
-    fill(89, 255, 255)
+    fill(89, 255, 255) 
     
     strokeWeight(5)
-    stroke(52, 235, 232)
+    stroke(52, 235, 232 ) 
     
     ellipse(0,0,20)
 
