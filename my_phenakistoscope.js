@@ -1,7 +1,7 @@
 const SLICE_COUNT = 11;
 
 function setup_pScope(pScope){
-  pScope.output_mode(ANIMATED_DISK);//ANIMATED_DISK//OUTPUT_GIF(1000) //
+  pScope.output_mode(OUTPUT_GIF(1000));//ANIMATED_DISK//OUTPUT_GIF(1000) //
   pScope.scale_for_screen(true);
   pScope.draw_layer_boundaries(false);
   pScope.set_direction(CW);
@@ -14,11 +14,11 @@ function setup_layers(pScope){
 
   
 
-  var layer1 = new PLayer(squares);
+  var layer1 = new PLayer(circles);
   layer1.mode( RING );
-  layer1.set_boundary( 0, 500 );
+  layer1.set_boundary( 0, 1000 );
 
-  var layer2 = new PLayer(circles);
+  var layer2 = new PLayer(clouds);
   layer2.mode(RING);
   layer2.set_boundary( 0, 1000 );
 
@@ -36,7 +36,7 @@ function setup_layers(pScope){
   
   var rainEffect = new PLayer(rain);
   rainEffect.mode(SWIRL(5));
-  rainEffect.set_boundary( 300, 800 );
+  rainEffect.set_boundary( 350, 800 );
 }
 
 
@@ -47,7 +47,7 @@ function setup_layers(pScope){
 
 
 
-function squares(x, y, animation, pScope){
+function circles(x, y, animation, pScope){
   scale(2)
   // this is how you set up a background for a specific layer
   let angleOffset = (360 / SLICE_COUNT) / 2
@@ -55,36 +55,51 @@ function squares(x, y, animation, pScope){
   let backgroundArcEnd = 270 + angleOffset;
  //orange
   fill(255, 202, 87)
-  //stroke(255, 127, 41)
-  //strokeWeight(10)
-  noStroke()
-  arc(x,y,500,780,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background have to be the same number for a circle
-
-  //yellow dots
+  stroke(255, 127, 41)
+  strokeWeight(10)
   
-  //fill(255, 225, 89)
-  //stroke(255, 242, 0)
-  //strokeWeight(5)
-  //ellipse(0,-300-animation.wave()*70,20) // .wave is a cosine wave btw negative numbers//first variable twists it
-  //ellipse(40,-300-animation.wave()*50,20) //make the rain
-  //ellipse(-40,-300-animation.wave()*50,20)
+  //noStroke()
+  arc(x,y,500,780,backgroundArcStart,backgroundArcEnd); // orange circle
+
+  
 
   let angleOffset2 = (360 / SLICE_COUNT) / 2
   let backgroundArcStart2 = 270 - angleOffset2;
   let backgroundArcEnd2 = 270 + angleOffset2;
  
   fill(89, 255, 255) //0, 255, 183       64, 86, 255    89, 255, 255
+  //fill(94, 255, 204)
+  //fill(52, 235, 232)
   strokeWeight(80)
   stroke(177, 247, 64)
-  arc(x,y,300,500,backgroundArcStart2,backgroundArcEnd2); 
+  arc(x,y,300,500,backgroundArcStart2,backgroundArcEnd2); //blue edge
+  
+  noStroke()
+  fill(52, 235, 232)
+  //fill(89, 255, 255) 
+  
+  arc(x,y,200,400,backgroundArcStart2,backgroundArcEnd2); //blue lake
+ 
+
+  //middle wirlpool dots
+  
+  //fill(14, 150, 148)
+  //fill(0, 247, 255)
+  fill(89, 255, 255)
+  //fill(13, 221, 224)
+  //fill(12, 163, 245)
+  //fill(0, 247, 255)
+  //stroke(255, 242, 0)
+  //strokeWeight(5)
+
+  ellipse(0,-40-animation.wave()*10,20) // .wave is a cosine wave btw negative numbers//first variable twists it
+ 
 
 }
 
-function circles(x, y, animation, pScope){
-  //translate(50 * animation.frame, 0);
-  //scale(animation.frame*2);
+function clouds(x, y, animation, pScope){
   
-  //clouds
+  
   fill(250, 89, 67);
   
   let ballSize  = 100 + (animation.wave(1)* 20)
@@ -156,10 +171,22 @@ function ducks(x, y, animation, pScope){
    
    
     //fill(171, 255, 251)
-    stroke(14, 150, 148)
-    fill(14, 150, 148)
-      ellipse(0,0,4) //4
-     // line(5)
+   // stroke(14, 150, 148)
+    //fill(14, 150, 148)
+    //fill(0, 247, 255)
+    //fill(13, 221, 224)
+    //fill(140, 255, 219)
+    fill(89, 255, 255)
+      //ellipse(0,0,4) //4
+     strokeWeight(5)
+    stroke(52, 235, 232)
+    //stroke(140, 255, 219)
+    ellipse(0,0,20)
+
+
+
+
+
     }
 
     function rain(x, y, animation, pScope){
