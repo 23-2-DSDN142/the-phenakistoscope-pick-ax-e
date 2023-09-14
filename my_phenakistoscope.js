@@ -1,7 +1,7 @@
 const SLICE_COUNT = 11;
 
 function setup_pScope(pScope){
-  pScope.output_mode(ANIMATED_DISK );//ANIMATED_DISK//OUTPUT_GIF(1000) //OUTPUT_PRINT(print_size)
+  pScope.output_mode(ANIMATED_DISK );
   pScope.scale_for_screen(true);
   pScope.draw_layer_boundaries(false);
   pScope.set_direction(CW);
@@ -14,7 +14,7 @@ function setup_layers(pScope){
 
   
 
-  var layer1 = new PLayer(circles);   //background flowers
+  var layer1 = new PLayer(circles);   //background layers
   layer1.mode( RING );
   layer1.set_boundary( 0, 1000 );
 
@@ -41,11 +41,6 @@ function setup_layers(pScope){
 
 
 
- 
-  
-  
-
-
 
 function circles(x, y, animation, pScope){
   scale(2)
@@ -53,7 +48,8 @@ function circles(x, y, animation, pScope){
   let angleOffset = (360 / SLICE_COUNT) / 2
   let backgroundArcStart = 270 - angleOffset;
   let backgroundArcEnd = 270 + angleOffset;
- //orange
+ 
+  //orange layer
   fill(255, 202, 87)
   stroke(255, 127, 41)
   strokeWeight(10)
@@ -83,7 +79,7 @@ function circles(x, y, animation, pScope){
   //middle wirlpool dots
   
 
-  fill( 89, 255, 255 ) // 52, 235, 232   89, 255, 255
+  fill( 89, 255, 255 )   
   
   ellipse(0,-40-animation.wave()*10,20) // .wave is a cosine wave btw negative numbers//first variable twists it
  
@@ -114,7 +110,6 @@ function ducks(x, y, animation, pScope){
 
   push()
     rotate(360/SLICE_COUNT * animation.frame) 
-    let rectJump = 200 + (animation.wave(1) * 25) 
     noStroke()
     fill(255)
     ellipse(150, 200, 100,100) 
@@ -143,8 +138,6 @@ function ducks(x, y, animation, pScope){
       fill(0)
       ellipse(60, 675, 50,10)
 
-      
-      
       noStroke()
       fill(255)
       ellipse(0, 650, 100,50) 
@@ -164,7 +157,6 @@ function ducks(x, y, animation, pScope){
    
     
     fill(89, 255, 255) 
-    
     strokeWeight(5)
     stroke(52, 235, 232 ) 
     
